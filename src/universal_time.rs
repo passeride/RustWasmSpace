@@ -1,18 +1,26 @@
 use chrono::prelude::{DateTime, Datelike, NaiveDateTime, Utc};
 
-struct UniversalTime {
+pub struct UniversalTime {
     pub date: f64,
+    pub datetime: DateTime<Utc>,
 }
 
 impl UniversalTime {
-    pub fn fromIso8601(time: &DateTime<Utc>) -> UniversalTime {
+    pub fn from_iso8601(time: &DateTime<Utc>) -> UniversalTime {
         let y = time.year() as f64;
         let m = time.month() as f64;
         let d = time.day() as f64;
         let d: f64 =
             367.0 * y - 7.0 * (y + (m + 9.0) / 12.0) / 4.0 + 275.0 * m / 9.0 + d - 730530.0;
 
-        UniversalTime { date: d }
+        UniversalTime {
+            date: d,
+            datetime: time.clone(),
+        }
+    }
+
+    pub fn to_iso_string(&self) -> String {
+        format!("{}", self.datetime.format("%+"))
     }
 
     pub fn iso8601(st: &std::time::SystemTime) -> String {
@@ -32,8 +40,9 @@ mod tests {
     fn universal_time() {
         // let now = SystemTime::now();
         let dt = DateTime::<Utc>::from_utc(NaiveDateTime::from_timestamp(946684800, 0), Utc);
-        let ut = UniversalTime::fromIso8601(&dt);
+        let ut = UniversalTime::from_iso8601(&dt);
         print!("Now datetime is {}", ut.date);
+        print!("Now datetime is {}", ut.to_iso_string());
     }
 
     #[test]
