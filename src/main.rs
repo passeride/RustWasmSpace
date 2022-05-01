@@ -1,5 +1,6 @@
 use macroquad::prelude::*;
 use planet::Planet;
+use universal_time::UniversalTime;
 
 mod planet;
 mod universal_time;
@@ -11,6 +12,7 @@ const LOOK_SPEED: f32 = 0.1;
 #[macroquad::main("3D")]
 async fn main() {
     let mut position = vec3(-100.0, 50.0, 10.0);
+    let mut time = UniversalTime::from_now();
 
     let mercury = Planet {
         name: String::from("Mercury"),
@@ -102,7 +104,7 @@ async fn main() {
         draw_sphere_wires(vec3(0., 0., 0.), 10., None, YELLOW);
 
         set_default_camera();
-        draw_text("WELCOME TO 3D WORLD", 10.0, 20.0, 30.0, BLACK);
+        draw_text(&time.to_iso_string(), 10.0, 20.0, 30.0, WHITE);
 
         next_frame().await
     }
