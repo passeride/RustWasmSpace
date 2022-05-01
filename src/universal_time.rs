@@ -1,6 +1,9 @@
 use std::time::SystemTime;
 
-use chrono::prelude::{DateTime, Utc};
+use chrono::{
+    prelude::{DateTime, Utc},
+    NaiveDateTime,
+};
 
 pub struct UniversalTime {
     pub datetime: DateTime<Utc>,
@@ -24,6 +27,13 @@ impl UniversalTime {
     pub fn iso8601(st: &std::time::SystemTime) -> String {
         let dt: DateTime<Utc> = st.clone().into();
         format!("{}", dt.format("%+"))
+    }
+
+    pub fn add_time(&mut self, time_to_add: i64) {
+        self.datetime = DateTime::<Utc>::from_utc(
+            NaiveDateTime::from_timestamp(time_to_add + self.datetime.timestamp(), 0),
+            Utc,
+        );
     }
 }
 

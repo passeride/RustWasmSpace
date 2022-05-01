@@ -5,6 +5,7 @@ use universal_time::UniversalTime;
 mod planet;
 mod universal_time;
 
+const TIME_SPEED: i64 = 1000;
 const MOVE_SPEED: f32 = 100.1;
 const ROTATION_SPEED: f32 = 1.1;
 const LOOK_SPEED: f32 = 0.1;
@@ -60,6 +61,7 @@ async fn main() {
 
     let planets = vec![mercury, venus, earth, mars];
     loop {
+        time.add_time(TIME_SPEED);
         let delta = get_frame_time();
         if is_key_down(KeyCode::Up) || is_key_down(KeyCode::W) {
             position.y += MOVE_SPEED * delta;
