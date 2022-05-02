@@ -26,7 +26,38 @@ pub fn rotate_point(cx: f32, cy: f32, angle: f32, mut p: Vec2) -> Vec2 {
 // Data from : https://nssdc.gsfc.nasa.gov/planetary/factsheet/
 pub struct Planet {
     pub color: Color,
-    pub name: String,
-    pub pos: Vec3,
+    pub name: &'static str,
     pub planet_data: PlanetData,
+}
+
+impl Planet {
+    pub const SUN: Planet = Planet {
+        color: YELLOW,
+        name: &"Sun",
+        planet_data: PlanetData::SUN,
+    };
+
+    pub const MERCURY: Planet = Planet {
+        color: GRAY,
+        name: &"Mercury",
+        planet_data: PlanetData::MERCURY,
+    };
+
+    pub const VENUS: Planet = Planet {
+        color: GREEN,
+        name: &"Venus",
+        planet_data: PlanetData::VENUS,
+    };
+
+    pub const EARTH: Planet = Planet {
+        color: BLUE,
+        name: &"Earth",
+        planet_data: PlanetData::EARTH,
+    };
+
+    pub const MARS: Planet = Planet {
+        color: RED,
+        name: &"Mars",
+        planet_data: PlanetData::MARS,
+    };
 }
