@@ -3,6 +3,7 @@ use planet::Planet;
 use universal_time::UniversalTime;
 
 mod planet;
+mod planet_data;
 mod universal_time;
 
 const TIME_SPEED: i64 = 1000;
@@ -15,49 +16,49 @@ async fn main() {
     let mut position = vec3(-100.0, 50.0, 10.0);
     let mut time = UniversalTime::from_now();
 
-    let mercury = Planet {
-        name: String::from("Mercury"),
-        color: ORANGE,
-        pos: vec3(0., 0., 0.),
-        mass: 0.33,
-        orbitRadius: 57.9,
-        radius: 4.8 / 2.,
-        orbitPeriod: 88.0,
-        rotationPeriod: 1407.6,
-    };
+    // let mercury = Planet {
+    //     name: String::from("Mercury"),
+    //     color: ORANGE,
+    //     pos: vec3(0., 0., 0.),
+    //     mass: 0.33,
+    //     orbitRadius: 57.9,
+    //     radius: 4.8 / 2.,
+    //     orbitPeriod: 88.0,
+    //     rotationPeriod: 1407.6,
+    // };
 
-    let venus = Planet {
-        name: String::from("Venus"),
-        color: GREEN,
-        pos: vec3(0., 0., 0.),
-        mass: 4.87,
-        orbitRadius: 108.9,
-        radius: 12.1 / 2.,
-        orbitPeriod: 224.7,
-        rotationPeriod: -5832.5,
-    };
+    // let venus = Planet {
+    //     name: String::from("Venus"),
+    //     color: GREEN,
+    //     pos: vec3(0., 0., 0.),
+    //     mass: 4.87,
+    //     orbitRadius: 108.9,
+    //     radius: 12.1 / 2.,
+    //     orbitPeriod: 224.7,
+    //     rotationPeriod: -5832.5,
+    // };
 
-    let earth = Planet {
-        name: String::from("Eart"),
-        color: BLUE,
-        pos: vec3(0., 0., 0.),
-        mass: 5.97,
-        orbitRadius: 149.6,
-        radius: 12.7 / 2.,
-        orbitPeriod: 365.2,
-        rotationPeriod: 23.9,
-    };
+    // let earth = Planet {
+    //     name: String::from("Eart"),
+    //     color: BLUE,
+    //     pos: vec3(0., 0., 0.),
+    //     mass: 5.97,
+    //     orbitRadius: 149.6,
+    //     radius: 12.7 / 2.,
+    //     orbitPeriod: 365.2,
+    //     rotationPeriod: 23.9,
+    // };
 
-    let mars = Planet {
-        name: String::from("Mars"),
-        color: RED,
-        pos: vec3(0., 0., 0.),
-        mass: 0.642,
-        orbitRadius: 228.6,
-        radius: 6.792 / 2.,
-        orbitPeriod: 687.0,
-        rotationPeriod: 24.7,
-    };
+    // let mars = Planet {
+    //     name: String::from("Mars"),
+    //     color: RED,
+    //     pos: vec3(0., 0., 0.),
+    //     mass: 0.642,
+    //     orbitRadius: 228.6,
+    //     radius: 6.792 / 2.,
+    //     orbitPeriod: 687.0,
+    //     rotationPeriod: 24.7,
+    // };
 
     let planets = vec![mercury, venus, earth, mars];
     loop {
